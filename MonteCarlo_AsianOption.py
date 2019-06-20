@@ -56,7 +56,7 @@ elif itertype == '1hour':
     dt = 1/1500       # waiting for modification
     Niter = t_delta.days*6
 
-def MonteCarlo_2(reTime,rf,S,K,sigma): #special for price insurance
+def MonteCarlo(reTime,rf,S,K,sigma): #special for price insurance
 	reTime = Niter     #no necessary in this case 
 	siTi = 10
 	list_1 = []   #asian call option value list
@@ -67,7 +67,7 @@ def MonteCarlo_2(reTime,rf,S,K,sigma): #special for price insurance
 		path = [S]
 		for node in range(int(totalNodes)-1):
 			path.append(path[-1]*exp((rf-0.5*sigma**2)*dt+(sigma*sqrt(dt)*gauss(0,1))))     
-		ave_close = average(path[-30:])
+		ave_close = np.average(path[-30:])
 		asian_put_value = max(K-ave_close,0)
 		asian_call_value = max(ave_close-K,0)
 		list_2.append(asian_put_value)
