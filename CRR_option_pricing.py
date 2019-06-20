@@ -2,7 +2,7 @@
 
 CRR model for option pricing
 
-JIMWWWJIMimport
+JIMWWWJIM
 
 collected from https://github.com/ququcai/option/blob/master/option_CRR.ipynb
 
