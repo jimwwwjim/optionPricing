@@ -14,3 +14,10 @@ BAW is specially for American option
 CRR model is mostly for American option, while it can also be used in European option
 
 Monte Carlo method is mostly for path dependent option, such as barrier option, binomial option, asian option
+
+****
+
+the combination of asian option and barrier option is uploaded
+the combination of asian option and cliquet option is uploaded
+
+these two exotic options are sppecial designed for a project.
