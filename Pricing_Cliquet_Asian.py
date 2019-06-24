@@ -1,21 +1,11 @@
 
 '''
-
-分阶段期权
-
-先看涨后看跌
-
-
-
+分阶段期权，总共4个月
+第一阶段为看跌，以第一阶段期初价格为执行价
+第二阶段为看跌，以第二阶段期初价格为执行价
+各阶段看涨看跌可选
 author：JIMWWWJIM
-
-
-
 '''
-
-
-
-#4个月两个阶段先看涨后看跌取平均
 
 #--------package
 import numpy as np
@@ -25,29 +15,23 @@ from math import exp, sqrt, log
 import time
 
 
-
-
 #----------parameters
 s0 = 11500    #initial price
 sigma = 0.3    #volatility
-r = 0.0278
-print('无风险利率  ', r)
+r = 0.0278     #risk free rate
 dt = 1/360
 min_pay = 30
 
 
 #---method one
 #----calculation
-
 #求list平均值
 
-def averagenum(num):
+def averagenum(num):    #no necessary, the are related function in numpy
 	nsum = 0
 	for i in range(len(num)):
 		nsum += num[i]
 	return nsum/len(num)
-
-
 N = 2
 I = 1000000
 M = 30
@@ -56,21 +40,19 @@ option_1_list = []
 option_2_list = []
 Per = N*M
 q = 0
-
 for i in range(I):
 	option_value = 0
 	for n in range(N):
-		if n == 0:
+		if n == 0:         #第一阶段的期初价格为前一交易日的收盘价
 			S0 = s0
 		else:
-			S0 = path_1[-1]
+			S0 = path_1[-1]  #其余阶段都为上一阶段最后一个收盘价
 		path = []
 		for m in range(M):
 			if m == 0:
 				path.append(S0)
 			else:
-				w = gauss(0,1)
-				St = path[m-1]*exp((r-0.5*sigma**2)*dt+sigma*sqrt(dt)*w)
+				St = path[m-1]*exp((r-0.5*sigma**2)*dt+sigma*sqrt(dt)*gauss(0,1))
 				path.append(St)
 		path_1 = path
 		#if n == 0:
@@ -79,7 +61,7 @@ for i in range(I):
 		#else:
 			#option_value = option_value + max((S0-averagenum(path)),0)*exp(-r*(n+1)/12)
 			#print('第二阶段看跌期权     ', max((S0-averagenum(path)),0)*exp(-r*(n+1)/12))
-		option_value = option_value + max((S0-averagenum(path)),0)*exp(-r*(n+1)/12)
+		option_value = option_value + max((S0-averagenum(path)),0)*exp(-r*(n+1)/12)      #在此确定各阶段的涨跌
 		if n == 0:
 			option_1_list.append(option_value)
 	if option_value < min_pay:
