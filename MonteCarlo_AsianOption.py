@@ -57,11 +57,11 @@ def MonteCarlo_2(reTime,rf,S,K,sigma): #special for price insurance, whole perio
 
 
 # paras input and result
-reTime = 120     #remaing days, can be modified in the time structure
-rf = .03     # risk free rate
-S = 12030     # current price
-K = 12030     # strike price
-sigma = .3    # volatility
+reTime = 122     #remaing days, can be modified in the time structure
+rf = .0289     # risk free rate
+S = 3475     # current price
+K = 3475     # strike price
+sigma = .16    # volatility, mostly the delta of option based on this para
 timer_ = perf_counter()
 print('--------最后三十天取平均值--------------------')
 print(MonteCarlo_1(reTime,rf,S,K,sigma), perf_counter()-timer_)

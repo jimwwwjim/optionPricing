@@ -19,11 +19,11 @@ mpl.rcParams['font.family'] = 'serif'
 
 
 #parameters
-S0 = 100.0  # index level
-K = 100.0  # option strike
+S0 = 3475.0  # index level
+K = 3475.0  # option strike
 T = 1.0  # maturity date
-r = 0.05  # risk-less short rate
-sigma = 0.2  # volatility
+r = 0.02  # risk-less short rate
+sigma = 0.22  # volatility
 
 #BSM模型定价
 def dN(x):
@@ -207,8 +207,12 @@ def CRR_american_option_value(S0, K, T, r, sigma, otype, M=4):
 mmin=2
 mmax=200
 step_size=1
+print('CRR model, calculating american option')
 print(CRR_american_option_value(S0, K, T, r, sigma, 'call', 100))
+print('CRR model, calculating european option')
 print(CRR_european_option_value(S0, K, T, r, sigma, 'call', 100))
+print('BS_put')
+print(BSM_put_value(S0, K, 0, T, r, sigma))
 
 #result visulization
 BSM_benchmark = BSM_call_value(S0, K, 0, T, r, sigma)

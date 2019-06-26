@@ -12,7 +12,7 @@ class Vanilla_BAW(Vanilla):
     '''
 
 
-def __init__(self):
+    def __init__(self):
     self.spot = None  # 标的价格
     self.strike = None  # 执行价
     self.volatility = None  # 波动率
