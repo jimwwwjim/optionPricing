@@ -48,6 +48,8 @@ c,p = BS_option_price(S0,K,sigma,T)
 cpflag = 'p'   # if the option is a kind of put then take it as 'p', call? 'c'
 q = 0       #不存在鼓励分发
 b = 0       #触碰后，不存在返还
+
+
 # ------- MC simulations-------
 #---------For I paths----------
 
