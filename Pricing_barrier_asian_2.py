@@ -38,7 +38,7 @@ sigma_A = 0.20  # A.DCE 当前HV30的最新值
 print('sigma of A.DCE',sigma_A)
 sigma_M = 0.17    # M.DCE    当前最新HV50
 print('sigma of M.DCE:',sigma_M)
-sigma_JD = 0.135   #JD.DCCE 当前hv
+sigma_JD = 0.19   #JD.DCCE 当前hv
 print('sigma of JD.DCE:', sigma_JD)
 min_pay_C = 25
 min_pay_A = 40
